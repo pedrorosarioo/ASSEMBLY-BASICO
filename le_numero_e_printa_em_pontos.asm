@@ -8,7 +8,7 @@ quebralinha db 10, 13, "$"
         int 21h
         mov ch, 0
         mov cl, al
-        sub cl, 48
+        ;sub cl, 48 (caso digitasse 2, printaria .., etc)
         mov dx, offset quebralinha
         mov ah, 09h
         int 21h
