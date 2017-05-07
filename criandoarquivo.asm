@@ -1,7 +1,7 @@
 .model small
 org 100h
 .data
-filename db "E:\amantenaotemlar.txt", 0
+filename db "E:\teste.txt", 0
 handle dw ?
 erro db "Erro de criacao de arquivo $"
 string db 255 DUP(13)
@@ -15,31 +15,11 @@ string db 255 DUP(13)
         int 21h
         mov handle, ax
         jc fail
-        jmp sucess
+        jmp fimprog
         fail:
             mov dx, offset erro
             mov ah, 09h
             int 21h
-            jmp fimprog
-        endp
-        sucess:
-            mov bx, handle
-            mov si, offset string
-            mov ah, 01h
-            ler:
-                int 21h
-                mov [si], al
-                inc si
-                cmp al, 13
-                jne ler
-            endp 
-            inc si
-            mov [si], '$'
-            mov dx, offset string
-            mov cx, 255
-            mov ah, 40h
-            int 21h
-            jc fail
         endp
         fimprog:
             mov ah, 3eh
