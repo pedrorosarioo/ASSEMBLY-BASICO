@@ -40,7 +40,7 @@ string db 255 DUP(13)
                 jne ler
             endp 
             inc si
-            mov [si], '$'
+            mov [si], ' '
             mov dx, offset string
             mov cx, 255
             mov ah, 40h
