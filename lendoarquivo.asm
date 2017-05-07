@@ -1,7 +1,7 @@
 .model small
 org 100h
 .data
-filename db "E:\amantenaotemlar.txt", 0
+filename db "E:\teste.txt", 0 ;assumindo que teste.txt seja um arquivo existente
 handle dw ?
 erro db "Erro no momento de escrever $"
 string db 255 DUP(13)
