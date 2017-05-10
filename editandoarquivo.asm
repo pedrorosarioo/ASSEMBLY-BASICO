@@ -11,12 +11,12 @@ string db 255 DUP(13)
     mov ax, @data
     mov ds, ax
     main proc
-        mov ah, 3dh
-        mov al, 2
-        mov dx, offset filename
+        mov ah, 3dh ;ABRIR O ARQUIVO
+        mov al, 2; ABRIR PARA LEITURA E ESCRITA
+        mov dx, offset filename ;NOME DO ARQUIVO A SE ABRIR
         int 21h
         mov handle, ax
-        jc fail
+        jc fail ;ENCERRAR O PROGRAMA CASO HAJA FALHA NA ABERTURA DO ARQUIVO (CF=1)
         jmp sucess
         fail:
             mov dx, offset erro
@@ -32,14 +32,14 @@ string db 255 DUP(13)
             ;mov dx, 0
             ;int 21h
             mov si, offset string
-            mov ah, 01h
-            ler:
-                int 21h
-                mov [si], al
-                inc si
-                cmp al, 13
-                jne ler
-            endp 
+            mov ah, 01h              ;S
+            ler:                     ;C 
+                int 21h              ;A
+                mov [si], al         ;N
+                inc si               ;F
+                cmp al, 13           ;
+                jne ler              ;
+            endp                     ;
             inc si
             mov [si], '$'
             mov dx, offset string
