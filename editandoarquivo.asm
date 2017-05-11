@@ -42,11 +42,11 @@ string db 255 DUP(13)
             endp                     ;
             inc si
             mov [si], '$'
-            mov dx, offset string
-            mov cx, 255
-            mov ah, 40h
-            int 21h
-            jc fail
+            mov dx, offset string ; DADO QUE SE DESEJA GRAVAR NO ARQUIVO ABERTO (NO CASO UMA STRING)
+            mov cx, 255 ; QUANTIDADE DE BYTES QUE SE DESEJA GRAVAR NO ARQUIVO ABERTO
+            mov ah, 40h ; INSTRUÇÃO PARA GRVAR DADOS NO ARQUIVO
+            int 21h ; GRAVANDO DADOS NO ARQUIVO
+            jc fail ; SE CF=1 EXECUTE A ROTINA FAIL (MENSAGEM DE ERRO E ENCERRA O PROGRAMA)
         endp
         
         fimprog:
